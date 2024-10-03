@@ -1,20 +1,14 @@
 import random
 
+import inp
 
 
-a = {
-    1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0,
-    11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0,
-    21: 0, 22: 0, 23: 0, 24: 0, 25: 0, 26: 0, 27: 0, 28: 0, 29: 0, 30: 0,
-    31: 0, 32: 0, 33: 0, 34: 0, 35: 0, 36: 0, 37: 0, 38: 0, 39: 0, 40: 0,
-    41: 0, 42: 0, 43: 0, 44: 0, 45: 0, 46: 0
-}
 
-def ziehung():
-    zahlen = list(range(1, 47))
+def ziehung(r1, r2, r3, a):
+    zahlen = list(range(r1, r2))
     gezogene_zahlen = []
 
-    for i in range(6):
+    for i in range(r3):
         zahl = random.choice(zahlen)
         zahlen.remove(zahl)
         a[zahl] += 1
@@ -22,14 +16,17 @@ def ziehung():
 
     print("Gezogene Zahlen:", gezogene_zahlen)
 
-def ergebnis_ausgeben():
+def ergebnis_ausgeben(a):
     print("\nErgebnisse der Ziehung:")
     for b in a:
         print(b, ":", a[b])
 
 if __name__ == '__main__':
+    r: str = input('Geben Sie die Parameter Ihres Spiels fest (getrennt durch Kommas): ')
+    range_of_game = r.split(',')
     inp: str = input('Anzahl der Durchgänge?: ')
-    for _ in range(int(inp)):
-        ziehung()
+    a = {i: 0 for i in range(int(range_of_game[0]), int(range_of_game[1]))}
+    for c in range(int(inp)):
+        ziehung(int(range_of_game[0]), int(range_of_game[1]), int(range_of_game[2]), a)
 
-    ergebnis_ausgeben()
+    ergebnis_ausgeben(a)
