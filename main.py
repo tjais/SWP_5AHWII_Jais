@@ -10,7 +10,6 @@ a = {
     41: 0, 42: 0, 43: 0, 44: 0, 45: 0, 46: 0
 }
 
-
 def ziehung():
     zahlen = list(range(1, 47))
     gezogene_zahlen = []
@@ -21,30 +20,16 @@ def ziehung():
         a[zahl] += 1
         gezogene_zahlen.append(zahl)
 
-
     print("Gezogene Zahlen:", gezogene_zahlen)
 
-
 def ergebnis_ausgeben():
-
     print("\nErgebnisse der Ziehung:")
     for b in a:
         print(b, ":", a[b])
 
-
 if __name__ == '__main__':
-    while True:
-
+    inp: str = input('Anzahl der Durchgänge?: ')
+    for _ in range(int(inp)):
         ziehung()
 
-
-        inp = input('Noch eine Ziehung spielen (nochmal/stopp): ')
-
-        if inp == "stopp":
-            print("Programm wird beendet.")
-            ergebnis_ausgeben()
-            sys.exit()
-        elif inp == "nochmal":
-            continue  
-        else:
-            print("Ungültige Eingabe, bitte 'nochmal' oder 'stopp' eingeben.")
+    ergebnis_ausgeben()
